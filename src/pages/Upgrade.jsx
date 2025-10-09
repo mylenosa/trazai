@@ -10,9 +10,8 @@ export default function UpgradePage() {
     const navigate = useNavigate();
 
     const handleFormSubmit = (data) => {
-        // Em um app real, os dados seriam salvos ou passados para a próxima etapa
         console.log("Upgrade data:", data);
-        navigate(createPageUrl('UpgradeConfirm'));
+        navigate('/upgrade/confirm');
     };
 
     return (
@@ -22,17 +21,17 @@ export default function UpgradePage() {
                     <Button
                         variant="outline"
                         size="icon"
-                        onClick={() => navigate(createPageUrl("Home"))}
-                        className="rounded-full"
+                        onClick={() => navigate('/')}
+                        className="rounded-full min-h-[44px] min-w-[44px]"
                     >
                         <ArrowLeft className="w-5 h-5" />
                     </Button>
                     <div>
-                        <h1 className="text-3xl md:text-4xl font-bold text-gray-900 flex items-center gap-3">
-                            <CreditCard className="w-8 h-8 text-orange-500" />
+                        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 flex items-center gap-2 sm:gap-3">
+                            <CreditCard className="w-6 h-6 sm:w-8 sm:h-8 text-orange-500" />
                             Upgrade para Premium
                         </h1>
-                        <p className="text-gray-600 mt-1">Desbloqueie todos os recursos e crie eventos ilimitados!</p>
+                        <p className="text-sm sm:text-base text-gray-600 mt-1">Desbloqueie todos os recursos e crie eventos ilimitados!</p>
                     </div>
                 </div>
 

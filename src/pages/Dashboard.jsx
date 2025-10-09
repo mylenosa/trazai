@@ -87,7 +87,7 @@ export default function Dashboard() {
             <Lock className="h-4 w-4" />
             <AlertTitle className="font-bold text-sm lg:text-base">Limite de eventos atingido!</AlertTitle>
             <AlertDescription className="text-sm lg:text-base leading-relaxed">
-              Você alcançou o limite de {FREE_PLAN_LIMIT} eventos ativos do plano gratuito. Para criar eventos ilimitados, <Link to={createPageUrl("Home")} className="font-semibold underline">faça o upgrade para o Premium.</Link>
+              Você alcançou o limite de {FREE_PLAN_LIMIT} eventos ativos do plano gratuito. Para criar eventos ilimitados, <Link to={createPageUrl("Upgrade")} className="font-semibold underline">faça o upgrade para o Premium.</Link>
             </AlertDescription>
           </Alert>
         )}

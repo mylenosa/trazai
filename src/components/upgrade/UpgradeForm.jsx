@@ -27,30 +27,32 @@ export default function UpgradeForm({ onSubmit }) {
                 </CardHeader>
                 <CardContent className="space-y-6">
                     <div className="space-y-2">
-                        <Label htmlFor="name">Nome Completo</Label>
-                        <Input 
-                            id="name" 
-                            placeholder="Seu nome" 
+                        <Label htmlFor="name" className="text-sm sm:text-base">Nome Completo</Label>
+                        <Input
+                            id="name"
+                            placeholder="Seu nome"
                             value={formData.name}
                             onChange={(e) => setFormData({...formData, name: e.target.value})}
-                            required 
+                            required
+                            className="min-h-[48px] text-base"
                         />
                     </div>
                     <div className="space-y-2">
-                        <Label htmlFor="email">E-mail</Label>
-                        <Input 
-                            id="email" 
-                            type="email" 
-                            placeholder="seu@email.com" 
+                        <Label htmlFor="email" className="text-sm sm:text-base">E-mail</Label>
+                        <Input
+                            id="email"
+                            type="email"
+                            placeholder="seu@email.com"
                             value={formData.email}
                             onChange={(e) => setFormData({...formData, email: e.target.value})}
-                            required 
+                            required
+                            className="min-h-[48px] text-base"
                         />
                     </div>
                     <div className="space-y-2">
-                        <Label htmlFor="plan">Plano Escolhido</Label>
+                        <Label htmlFor="plan" className="text-sm sm:text-base">Plano Escolhido</Label>
                         <Select value={formData.plan} onValueChange={(value) => setFormData({...formData, plan: value})}>
-                            <SelectTrigger id="plan">
+                            <SelectTrigger id="plan" className="min-h-[48px] text-base">
                                 <SelectValue placeholder="Selecione o plano" />
                             </SelectTrigger>
                             <SelectContent>
@@ -61,7 +63,7 @@ export default function UpgradeForm({ onSubmit }) {
                     </div>
                 </CardContent>
                 <CardFooter>
-                    <Button type="submit" className="w-full bg-orange-500 hover:bg-orange-600">
+                    <Button type="submit" className="w-full bg-orange-500 hover:bg-orange-600 min-h-[48px] text-base">
                         Continuar para Pagamento
                     </Button>
                 </CardFooter>

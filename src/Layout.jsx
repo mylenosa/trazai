@@ -34,9 +34,10 @@ export default function Layout({ children, currentPageName }) {
   
   // Páginas que NÃO devem ter sidebar (páginas públicas/landing)
   const publicPages = [
-    '/',                    // Home/Landing page
+    '/',                    // Landing page
     '/public-event',        // Página pública do evento
-    '/upgrade-confirm'      // Confirmação de upgrade
+    '/upgrade',             // Página de upgrade
+    '/upgrade/confirm'      // Confirmação de upgrade
   ];
   
   const isPublicPage = publicPages.includes(location.pathname) || 

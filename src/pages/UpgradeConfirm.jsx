@@ -3,7 +3,6 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter }
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, CheckCircle, ShieldCheck } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { createPageUrl } from '@/utils';
 import { PaymentsService } from '@/components/lib/PaymentsService';
 
 export default function UpgradeConfirm() {
@@ -45,20 +44,20 @@ export default function UpgradeConfirm() {
 
     if (paymentSuccess) {
         return (
-            <div className="min-h-screen flex items-center justify-center p-4">
+            <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-green-50 via-white to-orange-50">
                 <Card className="w-full max-w-md text-center">
                     <CardHeader>
                         <div className="mx-auto w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
                             <CheckCircle className="w-10 h-10 text-green-600" />
                         </div>
-                        <CardTitle className="text-2xl">Pagamento Aprovado!</CardTitle>
-                        <CardDescription>Bem-vindo ao Premium! Sua conta foi atualizada com sucesso.</CardDescription>
+                        <CardTitle className="text-xl sm:text-2xl">Pagamento Aprovado!</CardTitle>
+                        <CardDescription className="text-sm sm:text-base">Bem-vindo ao Premium! Sua conta foi atualizada com sucesso.</CardDescription>
                     </CardHeader>
                     <CardContent>
-                        <p className="text-gray-600">Agora você pode criar eventos ilimitados e acessar todos os recursos exclusivos.</p>
+                        <p className="text-sm sm:text-base text-gray-600">Agora você pode criar eventos ilimitados e acessar todos os recursos exclusivos.</p>
                     </CardContent>
                     <CardFooter>
-                        <Button className="w-full" onClick={() => navigate(createPageUrl('Dashboard'))}>
+                        <Button className="w-full min-h-[48px]" onClick={() => navigate('/dashboard')}>
                             Ir para meus eventos
                         </Button>
                     </CardFooter>
@@ -68,27 +67,27 @@ export default function UpgradeConfirm() {
     }
     
     return (
-        <div className="min-h-screen flex items-center justify-center p-4">
+        <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-orange-50 via-white to-green-50">
             <Card className="w-full max-w-md">
                 <CardHeader>
-                    <CardTitle>Resumo da Compra</CardTitle>
-                    <CardDescription>Confira os detalhes e prossiga para o pagamento.</CardDescription>
+                    <CardTitle className="text-xl sm:text-2xl">Resumo da Compra</CardTitle>
+                    <CardDescription className="text-sm sm:text-base">Confira os detalhes e prossiga para o pagamento.</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                    <div className="flex justify-between items-center p-4 border rounded-lg">
-                        <span className="text-gray-600">Plano</span>
-                        <span className="font-semibold">Premium Mensal</span>
+                    <div className="flex justify-between items-center p-3 sm:p-4 border rounded-lg">
+                        <span className="text-sm sm:text-base text-gray-600">Plano</span>
+                        <span className="text-sm sm:text-base font-semibold">Premium Mensal</span>
                     </div>
-                    <div className="flex justify-between items-center p-4 border rounded-lg">
-                        <span className="text-gray-600">Valor</span>
-                        <span className="font-bold text-2xl text-orange-600">R$ 9,90</span>
+                    <div className="flex justify-between items-center p-3 sm:p-4 border rounded-lg">
+                        <span className="text-sm sm:text-base text-gray-600">Valor</span>
+                        <span className="font-bold text-xl sm:text-2xl text-orange-600">R$ 9,90</span>
                     </div>
                 </CardContent>
                 <CardFooter className="flex flex-col gap-4">
-                    <Button onClick={handlePay} disabled={isLoading} className="w-full">
+                    <Button onClick={handlePay} disabled={isLoading} className="w-full min-h-[48px] bg-orange-500 hover:bg-orange-600">
                         {isLoading ? 'Processando...' : 'Pagar Agora'}
                     </Button>
-                    <Button variant="ghost" onClick={() => navigate(createPageUrl('Upgrade'))} className="w-full flex items-center gap-2">
+                    <Button variant="ghost" onClick={() => navigate('/upgrade')} className="w-full min-h-[48px] flex items-center gap-2">
                         <ArrowLeft className="w-4 h-4" /> Voltar
                     </Button>
                     <p className="text-xs text-gray-500 flex items-center justify-center gap-2 mt-2">

@@ -9,18 +9,18 @@ export function cn(...inputs) {
 // Utility para criar URLs de páginas
 export function createPageUrl(pageName, params = {}) {
   const routes = {
+    Landing: '/',
     Home: '/',
     Dashboard: '/dashboard',
     CreateEvent: '/create-event',
     EventDetails: '/event',
     PublicEvent: '/public-event',
     Upgrade: '/upgrade',
-    UpgradeConfirm: '/upgrade-confirm'
+    UpgradeConfirm: '/upgrade/confirm'
   };
 
   let url = routes[pageName] || '/';
-  
-  // Adicionar parâmetros de query se fornecidos
+
   if (Object.keys(params).length > 0) {
     const searchParams = new URLSearchParams(params);
     url += `?${searchParams.toString()}`;
