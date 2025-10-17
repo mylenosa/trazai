@@ -27,7 +27,7 @@ export default function ShareDialog({ open, onClose, eventName, shareUrl }) {
     <Dialog open={open} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle className="flex items-center gap-2 text-2xl">
+          <DialogTitle className="flex items-center gap-2 text-xl md:text-2xl">
             <Share2 className="w-6 h-6 text-orange-500" />
             Compartilhar Evento
           </DialogTitle>

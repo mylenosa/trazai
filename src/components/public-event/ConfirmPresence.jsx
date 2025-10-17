@@ -51,7 +51,7 @@ export default function ConfirmPresence({ event, onConfirm }) {
   return (
     <Card className="border-none shadow-2xl">
       <CardHeader className="bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-t-2xl">
-        <CardTitle className="text-2xl">Confirme sua Presença</CardTitle>
+        <CardTitle className="text-xl md:text-2xl">Confirme sua Presença</CardTitle>
       </CardHeader>
       <CardContent className="p-6">
         <form onSubmit={handleSubmit} className="space-y-6">

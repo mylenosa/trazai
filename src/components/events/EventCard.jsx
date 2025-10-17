@@ -22,7 +22,7 @@ export default function EventCard({ event, participantCount, index, isPast }) {
           <div className="h-40 bg-gradient-to-br from-orange-400 via-orange-500 to-orange-600 rounded-t-2xl relative overflow-hidden">
             <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-all duration-300" />
             <div className="absolute bottom-4 left-4 text-white">
-              <h3 className="text-2xl font-bold mb-1">{event.name}</h3>
+              <h3 className="text-xl md:text-2xl font-bold mb-1">{event.name}</h3>
               <p className="text-white/90 text-sm">{event.description || "Sem descrição"}</p>
             </div>
           </div>

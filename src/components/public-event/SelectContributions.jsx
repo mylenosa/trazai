@@ -49,7 +49,7 @@ export default function SelectContributions({ event, participants, onSubmit, onB
     <div className="space-y-6">
       <Card className="border-none shadow-2xl">
         <CardHeader className="bg-gradient-to-r from-green-500 to-green-600 text-white rounded-t-2xl">
-          <CardTitle className="text-2xl">O que você vai levar?</CardTitle>
+          <CardTitle className="text-xl md:text-2xl">O que você vai levar?</CardTitle>
           <p className="text-white/90 mt-2">Escolha como quer contribuir para o evento</p>
         </CardHeader>
         <CardContent className="p-6">

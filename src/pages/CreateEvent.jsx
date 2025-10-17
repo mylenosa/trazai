@@ -189,7 +189,7 @@ export default function CreateEvent() {
           <Card className="border-none shadow-xl">
             <CardHeader className="bg-gradient-to-r from-green-500 to-green-600 text-white rounded-t-xl">
               <div className="flex justify-between items-center">
-                <CardTitle className="text-2xl">O que precisamos?</CardTitle>
+                <CardTitle className="text-xl md:text-2xl">O que precisamos?</CardTitle>
                 <div className="flex gap-2">
                   <Button
                     type="button"
