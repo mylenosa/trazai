@@ -1,9 +1,11 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckCircle2, Users, Package } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function EventSummary({ event, participants }) {
+  const navigate = useNavigate();
   const confirmed = participants.filter(p => p.status === "confirmed");
   const totalPeople = confirmed.reduce((sum, p) => sum + 1 + (p.companions || 0), 0);
 
@@ -52,10 +54,10 @@ export default function EventSummary({ event, participants }) {
               💬 Continue acompanhando no grupo do WhatsApp
             </p>
             <Button
-              onClick={() => window.location.reload()}
+              onClick={() => navigate('/')}
               variant="outline"
             >
-              Voltar ao Início
+              Conhecer o TrazAí
             </Button>
           </div>
         </CardContent>
