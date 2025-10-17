@@ -1,3 +1,5 @@
+import { supabase } from '../lib/supabaseClient.js'
+
 export class Event {
   constructor({
     id = null,
@@ -157,6 +159,76 @@ export class Event {
     if (data.createdAt) event.createdAt = new Date(data.createdAt);
     if (data.updatedAt) event.updatedAt = new Date(data.updatedAt);
     return event;
+  }
+
+  static async list() {
+    const { data, error } = await supabase
+      .from('events')
+      .select('*')
+      .order('created_at', { ascending: false });
+
+    if (error) {
+      throw new Error(`Error fetching events: ${error.message}`);
+    }
+
+    return data.map(eventData => Event.fromJSON(eventData));
+  }
+
+  static async create(eventData) {
+    const event = new Event(eventData);
+    const validation = event.validate();
+
+    if (!validation.isValid) {
+      throw new Error(`Validation failed: ${validation.errors.join(', ')}`);
+    }
+
+    const { data, error } = await supabase
+      .from('events')
+      .insert([event.toJSON()])
+      .select()
+      .maybeSingle();
+
+    if (error) {
+      throw new Error(`Error creating event: ${error.message}`);
+    }
+
+    return Event.fromJSON(data);
+  }
+
+  static async findById(id) {
+    const { data, error } = await supabase
+      .from('events')
+      .select('*')
+      .eq('id', id)
+      .maybeSingle();
+
+    if (error) {
+      throw new Error(`Error fetching event: ${error.message}`);
+    }
+
+    if (!data) {
+      return null;
+    }
+
+    return Event.fromJSON(data);
+  }
+
+  static async findByLink(link) {
+    const { data, error } = await supabase
+      .from('events')
+      .select('*')
+      .eq('unique_link', link)
+      .maybeSingle();
+
+    if (error) {
+      throw new Error(`Error fetching event by link: ${error.message}`);
+    }
+
+    if (!data) {
+      return null;
+    }
+
+    return Event.fromJSON(data);
   }
 }
 

@@ -1,3 +1,5 @@
+import { supabase } from '../lib/supabaseClient.js'
+
 export class Participant {
   constructor({
     id = null,
@@ -189,6 +191,45 @@ export class Participant {
     if (data.registeredAt) participant.registeredAt = new Date(data.registeredAt);
     if (data.updatedAt) participant.updatedAt = new Date(data.updatedAt);
     return participant;
+  }
+
+  static async create(participantData) {
+    const participant = new Participant(participantData);
+    const validation = participant.validate();
+
+    if (!validation.isValid) {
+      throw new Error(`Validation failed: ${validation.errors.join(', ')}`);
+    }
+
+    const { data, error } = await supabase
+      .from('participants')
+      .insert([participant.toJSON()])
+      .select()
+      .maybeSingle();
+
+    if (error) {
+      throw new Error(`Error creating participant: ${error.message}`);
+    }
+
+    return Participant.fromJSON(data);
+  }
+
+  static async filter({ event_id }) {
+    if (!event_id) {
+      throw new Error('event_id is required for filtering participants');
+    }
+
+    const { data, error } = await supabase
+      .from('participants')
+      .select('*')
+      .eq('event_id', event_id)
+      .order('registered_at', { ascending: false });
+
+    if (error) {
+      throw new Error(`Error fetching participants: ${error.message}`);
+    }
+
+    return data.map(participantData => Participant.fromJSON(participantData));
   }
 }
 
