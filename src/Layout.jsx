@@ -50,7 +50,7 @@ function LayoutContent({ children }) {
       <div className="min-h-screen flex w-full bg-gradient-to-br from-orange-50 via-white to-green-50">
         <Sidebar className="border-r border-orange-100/50 lg:relative lg:translate-x-0">
           <SidebarHeader className="border-b border-orange-100/50 p-4 lg:p-6">
-            <div className="flex items-center gap-2 lg:gap-3">
+            <Link to="/dashboard" className="flex items-center gap-2 lg:gap-3 hover:opacity-80 transition-opacity">
               <div className="w-8 h-8 lg:w-10 lg:h-10 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center shadow-lg">
                 <Calendar className="w-4 h-4 lg:w-6 lg:h-6 text-white" />
               </div>
@@ -58,7 +58,7 @@ function LayoutContent({ children }) {
                 <h2 className="font-bold text-lg lg:text-xl text-gray-900">TrazAí</h2>
                 <p className="text-xs text-gray-500 hidden lg:block">Organize eventos incríveis</p>
               </div>
-            </div>
+            </Link>
           </SidebarHeader>
           
           <SidebarContent className="p-2 lg:p-3">

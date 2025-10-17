@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Event } from "@/entities/Event";
 import { Participant } from "@/entities/Participant";
 import { Calendar, MapPin, Clock, Users, CheckCircle2, XCircle, HelpCircle } from "lucide-react";
@@ -124,6 +125,18 @@ export default function PublicEvent() {
           />
         )}
       </div>
+
+      <footer className="mt-12 py-8 border-t border-gray-200">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <Link to="/" className="inline-flex items-center gap-2 hover:opacity-80 transition-opacity">
+            <div className="w-8 h-8 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center shadow-lg">
+              <Calendar className="w-5 h-5 text-white" />
+            </div>
+            <span className="text-lg font-bold text-gray-900">TrazAí</span>
+          </Link>
+          <p className="text-sm text-gray-600 mt-2">Organize seus eventos de forma simples e eficiente</p>
+        </div>
+      </footer>
     </div>
   );
 }
