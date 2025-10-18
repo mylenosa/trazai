@@ -18,7 +18,7 @@ export default function NeedsProgress({ needs }) {
   return (
     <Card className="border-none shadow-xl">
       <CardHeader>
-        <CardTitle className="flex items-center gap-2 text-2xl">
+        <CardTitle className="flex items-center gap-2 text-xl md:text-2xl">
           <Package className="w-6 h-6 text-green-500" />
           Necessidades do Evento
         </CardTitle>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { Calendar, Plus, User, Menu } from "lucide-react";
@@ -14,6 +14,7 @@ import {
   SidebarFooter,
   SidebarProvider,
   SidebarTrigger,
+  useSidebar,
 } from "@/components/ui/sidebar";
 
 const navigationItems = [
@@ -29,35 +30,27 @@ const navigationItems = [
   },
 ];
 
-export default function Layout({ children, currentPageName }) {
+function LayoutContent({ children }) {
   const location = useLocation();
-  
-  // Páginas que NÃO devem ter sidebar (páginas públicas/landing)
-  const publicPages = [
-    '/',                    // Landing page
-    '/public-event',        // Página pública do evento
-    '/upgrade',             // Página de upgrade
-    '/upgrade/confirm'      // Confirmação de upgrade
-  ];
-  
-  const isPublicPage = publicPages.includes(location.pathname) || 
-                      location.pathname.includes('/event/');
+  const { openMobile } = useSidebar();
 
-  // Para páginas públicas, não mostra sidebar
-  if (isPublicPage) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-green-50">
-        {children}
-      </div>
-    );
-  }
+  useEffect(() => {
+    if (openMobile) {
+      document.body.classList.add('overflow-hidden');
+    } else {
+      document.body.classList.remove('overflow-hidden');
+    }
+
+    return () => {
+      document.body.classList.remove('overflow-hidden');
+    };
+  }, [openMobile]);
 
   return (
-    <SidebarProvider>
       <div className="min-h-screen flex w-full bg-gradient-to-br from-orange-50 via-white to-green-50">
         <Sidebar className="border-r border-orange-100/50 lg:relative lg:translate-x-0">
           <SidebarHeader className="border-b border-orange-100/50 p-4 lg:p-6">
-            <div className="flex items-center gap-2 lg:gap-3">
+            <Link to="/dashboard" className="flex items-center gap-2 lg:gap-3 hover:opacity-80 transition-opacity">
               <div className="w-8 h-8 lg:w-10 lg:h-10 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center shadow-lg">
                 <Calendar className="w-4 h-4 lg:w-6 lg:h-6 text-white" />
               </div>
@@ -65,7 +58,7 @@ export default function Layout({ children, currentPageName }) {
                 <h2 className="font-bold text-lg lg:text-xl text-gray-900">TrazAí</h2>
                 <p className="text-xs text-gray-500 hidden lg:block">Organize eventos incríveis</p>
               </div>
-            </div>
+            </Link>
           </SidebarHeader>
           
           <SidebarContent className="p-2 lg:p-3">
@@ -120,6 +113,35 @@ export default function Layout({ children, currentPageName }) {
           </div>
         </main>
       </div>
+  );
+}
+
+export default function Layout({ children, currentPageName }) {
+  const location = useLocation();
+
+  // Páginas que NÃO devem ter sidebar (páginas públicas/landing)
+  const publicPages = [
+    '/',                    // Landing page
+    '/public-event',        // Página pública do evento
+    '/upgrade',             // Página de upgrade
+    '/upgrade/confirm'      // Confirmação de upgrade
+  ];
+
+  const isPublicPage = publicPages.includes(location.pathname) ||
+                      location.pathname.includes('/event/');
+
+  // Para páginas públicas, não mostra sidebar
+  if (isPublicPage) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-green-50">
+        {children}
+      </div>
+    );
+  }
+
+  return (
+    <SidebarProvider>
+      <LayoutContent>{children}</LayoutContent>
     </SidebarProvider>
   );
 }

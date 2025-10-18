@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Layout from './Layout'
+import { AuthProvider } from './contexts/AuthContext'
 
 // Auth
 import { AuthProvider } from './contexts/AuthContext'
@@ -23,6 +24,7 @@ function App() {
         <Layout>
           <Routes>
             <Route path="/" element={<Landing />} />
+<<<<<<< HEAD
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignupPage />} />
 
@@ -44,6 +46,10 @@ function App() {
               }
             />
 
+=======
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/create-event" element={<CreateEvent />} />
+>>>>>>> 9b87015e034235eb9dff83e45d1457181a5457cc
             <Route path="/event/:id" element={<EventDetails />} />
             <Route path="/public-event" element={<PublicEvent />} />
             <Route path="/upgrade" element={<Upgrade />} />

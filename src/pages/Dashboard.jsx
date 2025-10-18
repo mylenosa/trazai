@@ -104,7 +104,7 @@ export default function Dashboard() {
           <>
             {activeEvents.length > 0 && (
               <div className="mb-8 lg:mb-12">
-                <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 lg:mb-6">Eventos Ativos</h2>
+                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 lg:mb-6">Eventos Ativos</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
                   {activeEvents.map((event, index) => (
                     <EventCard 
@@ -120,7 +120,7 @@ export default function Dashboard() {
 
             {pastEvents.length > 0 && (
               <div>
-                <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 lg:mb-6">Eventos Anteriores</h2>
+                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 lg:mb-6">Eventos Anteriores</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
                   {pastEvents.map((event, index) => (
                     <EventCard 
